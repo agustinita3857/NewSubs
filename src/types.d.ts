@@ -3,6 +3,7 @@ export interface Sub {
     avatar: string
     subMonth: number
     description?: string
+    id: number
   }
 
 export type SubsResponseFromApi = Array<{
@@ -10,4 +11,5 @@ export type SubsResponseFromApi = Array<{
   months: number
   profileUrl: string
   description: string
+  id: number
 }>

@@ -1,19 +1,25 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.css';
-import List from './components/List';
-import Form from './components/Form';
+import Guests from './components/guests/index';
 
 import {Sub, SubsResponseFromApi} from './types';
 import axios from 'axios';
+import Menu from './components/menu/index';
+import {mockSubInfo} from './mockInfo';
+import {menuItems} from './constants/menuConstants';
+import Home from './components/homePage/index';
+
+import {BrowserRouter, Routes, Route, Link  } from "react-router-dom";
 
 interface AppState {
   subs: Array<Sub>
 }
 
 function App() {
-  const [subs, setSubs] = useState<AppState['subs']>([]);
+  const [subs, setSubs] = useState<AppState['subs']>(mockSubInfo);
   const divRef = useRef<HTMLDivElement>(null)
 
+  //el servicio no funciona asique utilizo un mock de los datos
   useEffect(()=>{
     const fetchSubs = () => {
       return axios
@@ -21,7 +27,7 @@ function App() {
         .then(resp => resp.data)
     }
     /*
-     opcion async await
+     //opcion async await
      const fetchSubs = async () => {
       const resp = await axios
         .get<SubsResponseFromApi>('http://localhost:3001/subs') // el type se puede poner ahi o en la promesa
@@ -31,7 +37,7 @@ function App() {
     */
 
     /* 
-      opcion fetch
+      //opcion fetch
       const fetchSubs = () : Promise<SubsResponseFromApi> => {
       return fetch('http://localhost:3001/subs')
         .then(res => res.json())
@@ -44,14 +50,16 @@ function App() {
           months: subMonth,
           profileUrl: avatar,
           nick,
-          description
+          description,
+          id
         } = subFromApi
 
         return {
           nick,
           description,
           avatar,
-          subMonth
+          subMonth,
+          id
         }
       })
     }
@@ -73,11 +81,26 @@ function App() {
     setSubs([...subs, newSub])
   };
 
+  const handleRemoveSub = (e: Sub) => {
+    const newSubs = subs.filter((sub)=> sub.id !== e.id)
+    setSubs(newSubs);
+  };
+
   return (
-    <div className="App" ref={divRef}>
-      <h1>Midu Subs</h1>
-      <List subs={subs}/>
-      <Form onNewSubs={handleNewSub}/>
+    <div className='container'>
+        <BrowserRouter>
+          <div className='header'>
+            <h1>Sus patas en nuestras manos</h1>
+          </div>
+          <div className='content'>
+            <Menu  menuItems={menuItems}/>
+            <Routes>
+              <Route path='/home' element={<Home/>}/>
+              <Route path='/contacto'/>
+              <Route path='/inquilinos' element={<Guests subs={subs} handleSubs={handleNewSub} handleDeleteSub={handleRemoveSub}/>}/>
+            </Routes>
+          </div>
+        </BrowserRouter>
     </div>
   );
 }

@@ -1,0 +1,10 @@
+.formTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.formTitle span {
+    margin-right: 10px;
+}
