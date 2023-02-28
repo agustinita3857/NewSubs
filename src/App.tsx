@@ -87,15 +87,15 @@ function App() {
   };
 
   return (
-    <div className='container'>
+    <div className='flex flex-col'>
         <BrowserRouter>
-          <div className='header'>
-            <h1>Sus patas en nuestras manos</h1>
+          <div className='bg-header-green rounded-md flex justify-center mb-3'>
+            <h1 className='text-xl'>Sus patas en nuestras manos</h1>
           </div>
-          <div className='content'>
+          <div className='flex flex-row m-5'>
             <Menu  menuItems={menuItems}/>
             <Routes>
-              <Route path='/home' element={<Home/>}/>
+              <Route path='/' element={<Home/>}/>
               <Route path='/contacto'/>
               <Route path='/inquilinos' element={<Guests subs={subs} handleSubs={handleNewSub} handleDeleteSub={handleRemoveSub}/>}/>
             </Routes>

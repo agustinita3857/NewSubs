@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities; 
+
 body {
   background-color: darkseagreen;
   font-family: 'cursive';
@@ -6,34 +10,6 @@ body {
   
 }
 
-.container{
-  display: flex;
-  flex-direction: column;
-}
-
-.header{
-  background-color: #E6E6FA;
-  border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.content{
-  display: flex;
-  flex-direction: row;
-  margin: 20px;
-}
-
-.titleContainer div {
-  margin-right: 10px;
-}
-
-.formTitle{
-  color: 	#505050;
-  font-size: 20px;
-  font-weight: 600;
-}
 
 textarea {
   border-radius: 8px;
@@ -46,10 +22,6 @@ textarea {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.App {
-  display: flex;
 }
 
 ul {
@@ -94,12 +66,6 @@ ul li p {
   font-size: 14px;
 }
 
-form {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin: 20px;
-}
 form input {
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -110,22 +76,4 @@ form input {
 
 form input:hover, form textarea:hover {
   background-color: #F0F0F0;
-}
-
-.clearFormButton {
-  background-color: #3c869d;
-  border-color: #3c869d;
-  border-radius: 8px;
-  color: white;
-  margin: 8px;
-}
-
-.addNewButton {
-  background: #7ad9f8;
-  border-color: #7ad9f8;
-  border-radius: 8px;
-}
-
-.addNewButton:disabled , .clearFormButton:disabled{
-  cursor: not-allowed;
 }

@@ -1,6 +1,5 @@
 import { Sub } from "../../types";
 import Form from "../Form";
-import './styles.css';
 import {AiOutlineForm} from 'react-icons/ai';
 
 interface GuestFormProps {
@@ -11,8 +10,8 @@ interface GuestFormProps {
 const GuestForm = ({handleNewSub, subsLength}: GuestFormProps) => {
     return (
         <div>
-            <div className='formTitle' >
-                <span>Formulario de inscripción</span>
+            <div className='text-gray-700 text-xl font-semibold flex items-center justify-center text-center' >
+                <span className='m-3 whitespace-nowrap'>Formulario de inscripción</span>
                 <AiOutlineForm/>
             </div>
             <Form onNewSubs={handleNewSub} subsLength={subsLength}/>

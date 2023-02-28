@@ -2,7 +2,6 @@ import { FaPaw } from 'react-icons/fa';
 import { Sub } from '../../types';
 import GuestForm from '../guestForm';
 import List from '../List';
-import './styles.css';
 
 interface GuestsProps {
     handleSubs: (newSub: Sub)=> void
@@ -12,9 +11,9 @@ interface GuestsProps {
 
 const Guests = ({subs, handleSubs, handleDeleteSub}: GuestsProps) => {
     return (
-        <div className='guestContainer'>
+        <div className='flex'>
             <div>
-                <div className='titleContainer'>
+                <div className='text-gray-700 flex text-xl font-semibold justify-center m-3 underline'>
                     <div>Nuestros Inquilinos</div>
                     <FaPaw/>
                 </div>

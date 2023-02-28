@@ -23,31 +23,30 @@ const Home  = () => {
     const [carouselImages, setCarouselImages] = useState(arr1);
 
     return (
-        <div className="contenedor-titulo-carousel">
-           <h1>Conocé nuestra causa</h1>
-           
-                <div className="contenedor-principal">
-                    <button className='flecha-izq' disabled={carouselIndex === 0}  onClick={()=>{ setCarouselImages(arr1) 
+        <div className="w-11/12">
+           <h1  className='text-xl underline text-emerald-700 font-semibold'>Conocé nuestra causa</h1>
+                <div className="flex items-center relative">
+                    <button className='flecha-izq enabled:hover:bg-light-green disabled:bg-slate-500 disabled:text-slate-300 disabled:cursor-not-allowed' disabled={carouselIndex === 0}  onClick={()=>{ setCarouselImages(arr1) 
                     setCarouselIndex(carouselIndex -1)}} >{<AiOutlineArrowLeft/>}</button>
-                    <div className='contenedor-carousel'>
-                        <div className='carousel'>
+                    <div className='overflow-hidden py-5 scroll-smooth w-full'>
+                        <div className='items-center flex flex-nowrap justify-around'>
                             {
                                 carouselImages.map((image, ind)=>{
                                     return (
-                                        <div className='carousel-imagen' key={ind}>
-                                            <img src={image} alt={image}></img>
+                                        <div key={ind}>
+                                            <img className='m-1 h-36 p-3 w-44 shadow-2xl hover:scale-125 z-50' src={image} alt={image}></img>
                                         </div>
                                     )
                                 })
                             }
                         </div>
                     </div>
-                    <button className='flecha-der' disabled={carouselIndex === 1} onClick={()=>{ setCarouselImages(arr2)
+                    <button className='flecha-der enabled:hover:bg-light-green disabled:bg-slate-500 disabled:text-slate-300 disabled:cursor-not-allowed' disabled={carouselIndex === 1} onClick={()=>{ setCarouselImages(arr2)
                     setCarouselIndex(carouselIndex +1)}}>
                         {<AiOutlineArrowRight/>}</button>
                 </div>
             
-            <div className='description-container'>
+            <div className='text-emerald-900 description-container flex flex-col p-5'>
                 <span>
                     Mi nombre es Sergio y les doy la bienvenida a 'Sus patas en nuestras manos'.
                 </span>

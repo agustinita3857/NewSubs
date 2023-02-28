@@ -72,13 +72,13 @@ const Form = ({onNewSubs, subsLength}: FormProps) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form className='mx-5 flex items-center flex-col' onSubmit={handleSubmit}>
                 <input onChange={handleChange} value={inputValues.nick} type='text' name='nick' placeholder='nombre'/>
                 <input onChange={handleChange} value={inputValues.subMonth} type='number' name='subMonth' placeholder='años'/>
                 <input onChange={handleChange} value={inputValues.avatar} type='text' name='avatar' placeholder='url de foto'/>
                 <textarea onChange={handleChange} value={inputValues.description} name='description' placeholder='descripción'/>
-                <button disabled={inputValues.avatar === '' && inputValues.nick === '' && inputValues.description === ''} className='clearFormButton' onClick={handleClear} type='button'>Limpiar formulario</button>
-                <button disabled={inputValues.avatar === '' || inputValues.nick === ''} className="addNewButton" type='submit'>Añadir nueva respuesta</button>
+                <button disabled={inputValues.avatar === '' || inputValues.nick === ''} className='bg-cyan-300 rounded-lg p-1 text-zinc-800 disabled:cursor-not-allowed' type='submit'>Añadir nueva respuesta</button>
+                <button disabled={inputValues.avatar === '' && inputValues.nick === '' && inputValues.description === ''} className='bg-cyan-700 rounded-lg text-zinc-300 m-2 p-1 disabled:cursor-not-allowed' onClick={handleClear} type='button'>Limpiar formulario</button>
             </form>
         </div>
     )

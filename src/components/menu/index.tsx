@@ -1,5 +1,3 @@
-import './styles.css';
-import {Link} from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
 
 interface MenuItem {
@@ -12,8 +10,6 @@ interface MenuProps {
 }
 
 
-
-
 const Menu = ({menuItems}: MenuProps) => {
     const navigate = useNavigate();
 
@@ -22,11 +18,14 @@ const Menu = ({menuItems}: MenuProps) => {
     };
 
 return (
-    <div className='menuContainer'>
+    <div className='flex flex-col h-fit mr-5 w-1/6'>
         {
         menuItems.map(((item, id) => {
             return (
-            <button key={id} onClick={()=>handleItemSelect(item.path)} className='menuItem'>{item.name}</button>
+            <button key={id} onClick={()=>handleItemSelect(item.path)} 
+                className='bg-light-green border-2 rounded-lg border-solid border-black text-base font-semibold my-1 mx-0 p-4 hover:shadow-lg'>
+                    {item.name}
+            </button>
             )
         }))
         }
